@@ -19,4 +19,20 @@ defmodule AmazonTracker.AmazonFixtures do
 
     product
   end
+
+  @doc """
+  Generate a product.
+  """
+  def product_fixture(attrs \\ %{}) do
+    {:ok, product} =
+      attrs
+      |> Enum.into(%{
+        price: 120.5,
+        title: "some title",
+        url: "some url"
+      })
+      |> AmazonTracker.Amazon.create_product()
+
+    product
+  end
 end

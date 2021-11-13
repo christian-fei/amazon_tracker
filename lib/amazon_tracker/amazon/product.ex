@@ -3,7 +3,7 @@ defmodule AmazonTracker.Amazon.Product do
   import Ecto.Changeset
 
   schema "products" do
-    field :price, :string
+    field :price, :float
     field :title, :string
     field :url, :string
 
