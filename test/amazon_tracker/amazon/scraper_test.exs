@@ -9,7 +9,7 @@ defmodule AmazonTracker.TrackerTest do
     assert product.title
     assert product.image
     assert product.url
-    # assert product.price
+    assert product.price
 
     # assert product == %AmazonTracker.Amazon.Product{
     #          title:
