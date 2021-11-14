@@ -29,8 +29,9 @@ defmodule AmazonTracker.ProductTracker do
 
     image =
       document
-      |> Floki.find("#imgTagWrapperId")
+      |> Floki.find("#imgTagWrapperId img")
       |> Floki.attribute("src")
+      |> Enum.at(0, "")
 
     state = Map.put(state, :body, body)
     state = Map.put(state, :price, price)
@@ -47,8 +48,8 @@ defmodule AmazonTracker.ProductTracker do
     product = %AmazonTracker.Amazon.Product{
       url: state.url,
       price: state.price,
-      title: state.title
-      # image: state.image
+      title: state.title,
+      image: state.image
     }
 
     {:reply, {:ok, product}, state}

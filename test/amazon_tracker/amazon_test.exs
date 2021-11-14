@@ -21,7 +21,7 @@ defmodule AmazonTracker.AmazonTest do
     end
 
     test "create_product/1 with valid data creates a product" do
-      valid_attrs = %{price: 120.5, title: "some title", url: "some url", image: ""}
+      valid_attrs = %{price: 120.5, title: "some title", url: "some url", image: "some-image"}
 
       assert {:ok, %Product{} = product} = Amazon.create_product(valid_attrs)
       assert product.price == 120.5
@@ -40,7 +40,7 @@ defmodule AmazonTracker.AmazonTest do
         price: 456.7,
         title: "some updated title",
         url: "some updated url",
-        image: ""
+        image: "some-image"
       }
 
       assert {:ok, %Product{} = product} = Amazon.update_product(product, update_attrs)
