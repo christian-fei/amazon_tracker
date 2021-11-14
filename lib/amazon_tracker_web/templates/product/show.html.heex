@@ -1,23 +1,19 @@
-<h1>Show Product</h1>
+<div class="product">
+  <h1 class="title"><%= @product.title %></h1>
 
-<ul>
+  <img src={@product.image}/>
 
-  <li>
-    <strong>Title:</strong>
-    <%= @product.title %>
-  </li>
-
-  <li>
+  <div>
     <strong>Url:</strong>
     <%= @product.url %>
-  </li>
+  </div>
 
-  <li>
+  <div>
     <strong>Image:</strong>
     <%= @product.image %>
-  </li>
+  </div>
 
-  <li>
+  <div>
     <h2>Price history</h2>
     <%= for price <- @product.prices do %>
       <div class="price-history-item">
@@ -25,9 +21,8 @@
         <time><%= price.inserted_at %></time>
       </div>
     <% end %>
-  </li>
-
-</ul>
+  </div>
+</div>
 
 <span><%= link "Edit", to: Routes.product_path(@conn, :edit, @product) %></span> |
 <span><%= link "Back", to: Routes.product_path(@conn, :index) %></span>
