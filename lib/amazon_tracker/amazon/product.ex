@@ -8,6 +8,8 @@ defmodule AmazonTracker.Amazon.Product do
     field :url, :string
     field :image, :string
 
+    has_many :prices, AmazonTracker.Amazon.Price
+
     timestamps()
   end
 
