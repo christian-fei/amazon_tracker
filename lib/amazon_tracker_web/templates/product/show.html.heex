@@ -17,6 +17,16 @@
     <%= @product.image %>
   </li>
 
+  <li>
+    <h2>Price history</h2>
+    <%= for price <- @product.prices do %>
+      <div class="price-history-item">
+        <span><%= price.price %></span>
+        <time><%= price.inserted_at %></time>
+      </div>
+    <% end %>
+  </li>
+
 </ul>
 
 <span><%= link "Edit", to: Routes.product_path(@conn, :edit, @product) %></span> |

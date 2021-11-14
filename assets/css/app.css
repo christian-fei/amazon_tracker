@@ -87,3 +87,15 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+
+.price-history-item {
+  padding: 0.2em 0;
+}
+.price-history-item span {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.price-history-item time {
+  font-size: 0.8em;
+}
