@@ -26,6 +26,8 @@ defmodule AmazonTracker.ProductTracker do
       |> Floki.find(".apexPriceToPay .a-offscreen")
       |> Floki.text()
       |> String.trim()
+      |> String.replace("€", "")
+      |> String.to_float()
 
     image =
       document
