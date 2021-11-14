@@ -3,7 +3,6 @@ defmodule AmazonTracker.Amazon.Product do
   import Ecto.Changeset
 
   schema "products" do
-    field :price, :float
     field :title, :string
     field :url, :string
     field :image, :string
@@ -16,7 +15,7 @@ defmodule AmazonTracker.Amazon.Product do
   @doc false
   def changeset(product, attrs) do
     product
-    |> cast(attrs, [:title, :url, :price, :image])
-    |> validate_required([:title, :url, :price, :image])
+    |> cast(attrs, [:title, :url, :image])
+    |> validate_required([:title, :url, :image])
   end
 end

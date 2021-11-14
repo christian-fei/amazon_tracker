@@ -20,7 +20,7 @@ defmodule AmazonTracker.Amazon.Scraper do
 
     product = product_from_document(document, state.url)
 
-    state = Map.put(state, :price, product.price)
+    # state = Map.put(state, :price, product.price)
     state = Map.put(state, :title, product.title)
     state = Map.put(state, :image, product.image)
 
@@ -44,13 +44,13 @@ defmodule AmazonTracker.Amazon.Scraper do
   defp product_from_document(document, url) do
     title = document |> Floki.find("#productTitle") |> Floki.text() |> String.trim()
 
-    price =
-      document
-      |> Floki.find(".apexPriceToPay .a-offscreen")
-      |> Floki.text()
-      |> String.trim()
-      |> String.replace("€", "")
-      |> String.to_float()
+    # price =
+    #   document
+    #   |> Floki.find(".apexPriceToPay .a-offscreen")
+    #   |> Floki.text()
+    #   |> String.trim()
+    #   |> String.replace("€", "")
+    #   |> String.to_float()
 
     image =
       document
@@ -60,7 +60,7 @@ defmodule AmazonTracker.Amazon.Scraper do
 
     %AmazonTracker.Amazon.Product{
       url: url,
-      price: price,
+      # price: price,
       title: title,
       image: image
     }

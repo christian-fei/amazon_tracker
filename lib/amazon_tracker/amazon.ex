@@ -19,6 +19,7 @@ defmodule AmazonTracker.Amazon do
   """
   def list_products do
     Repo.all(Product)
+    |> Repo.preload(:prices)
   end
 
   @doc """
@@ -35,7 +36,7 @@ defmodule AmazonTracker.Amazon do
       ** (Ecto.NoResultsError)
 
   """
-  def get_product!(id), do: Repo.get!(Product, id)
+  def get_product!(id), do: Repo.get!(Product, id) |> Repo.preload(:prices)
 
   @doc """
   Creates a product.

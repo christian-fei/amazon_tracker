@@ -17,11 +17,6 @@
     <%= @product.image %>
   </li>
 
-  <li>
-    <strong>Price:</strong>
-    <%= @product.price %>
-  </li>
-
 </ul>
 
 <span><%= link "Edit", to: Routes.product_path(@conn, :edit, @product) %></span> |

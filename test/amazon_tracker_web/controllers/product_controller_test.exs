@@ -3,14 +3,13 @@ defmodule AmazonTrackerWeb.ProductControllerTest do
 
   import AmazonTracker.AmazonFixtures
 
-  @create_attrs %{title: "some title", url: "some url", price: 123, image: "test-image"}
+  @create_attrs %{title: "some title", url: "some url", image: "test-image"}
   @update_attrs %{
     title: "some updated title",
     url: "some updated url",
-    price: 123,
     image: "test-image"
   }
-  @invalid_attrs %{title: nil, url: nil, price: nil, image: nil}
+  @invalid_attrs %{title: nil, url: nil, image: nil}
 
   describe "index" do
     test "lists all products", %{conn: conn} do

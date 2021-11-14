@@ -13,8 +13,8 @@ defmodule AmazonTracker.AmazonFixtures do
       |> Enum.into(%{
         title: "some title",
         url: "some url",
-        price: 123.45,
-        image: "some-image"
+        image: "some-image",
+        prices: []
       })
       |> AmazonTracker.Amazon.create_product()
 
