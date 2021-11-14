@@ -9,6 +9,7 @@
     <div style="flex: 1">
       <a href={product.url} target="_blank">amazon</a>
       <h2><%= product.price %></h2>
+      <img src={product.image}/>
     </div>
     <div style="flex: 1">
       <span style="display: inline-block; padding: 0.5em 1em;"><%= link "Show", to: Routes.product_path(@conn, :show, product) %></span>

@@ -8,7 +8,7 @@ defmodule AmazonTracker.AmazonTest do
 
     import AmazonTracker.AmazonFixtures
 
-    @invalid_attrs %{price: nil, title: nil, url: nil}
+    @invalid_attrs %{price: nil, title: nil, url: nil, image: nil}
 
     test "list_products/0 returns all products" do
       product = product_fixture()
@@ -21,7 +21,7 @@ defmodule AmazonTracker.AmazonTest do
     end
 
     test "create_product/1 with valid data creates a product" do
-      valid_attrs = %{price: 120.5, title: "some title", url: "some url"}
+      valid_attrs = %{price: 120.5, title: "some title", url: "some url", image: ""}
 
       assert {:ok, %Product{} = product} = Amazon.create_product(valid_attrs)
       assert product.price == 120.5
@@ -35,7 +35,13 @@ defmodule AmazonTracker.AmazonTest do
 
     test "update_product/2 with valid data updates the product" do
       product = product_fixture()
-      update_attrs = %{price: 456.7, title: "some updated title", url: "some updated url"}
+
+      update_attrs = %{
+        price: 456.7,
+        title: "some updated title",
+        url: "some updated url",
+        image: ""
+      }
 
       assert {:ok, %Product{} = product} = Amazon.update_product(product, update_attrs)
       assert product.price == 456.7

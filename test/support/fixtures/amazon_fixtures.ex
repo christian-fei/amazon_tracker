@@ -11,9 +11,10 @@ defmodule AmazonTracker.AmazonFixtures do
     {:ok, product} =
       attrs
       |> Enum.into(%{
-        price: 120.5,
         title: "some title",
-        url: "some url"
+        url: "some url",
+        price: 123,
+        image: ""
       })
       |> AmazonTracker.Amazon.create_product()
 

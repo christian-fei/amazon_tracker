@@ -6,6 +6,7 @@ defmodule AmazonTracker.Amazon.Product do
     field :price, :float
     field :title, :string
     field :url, :string
+    field :image, :string
 
     timestamps()
   end
@@ -13,7 +14,7 @@ defmodule AmazonTracker.Amazon.Product do
   @doc false
   def changeset(product, attrs) do
     product
-    |> cast(attrs, [:title, :url, :price])
-    |> validate_required([:title, :url, :price])
+    |> cast(attrs, [:title, :url, :price, :image])
+    |> validate_required([:title, :url, :price, :image])
   end
 end
