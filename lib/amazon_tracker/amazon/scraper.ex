@@ -54,6 +54,8 @@ defmodule AmazonTracker.Amazon.Scraper do
     }
   rescue
     e ->
+      IO.puts("failed to scrape " ++ product.url)
+      IO.inspect(e)
       product
   end
 end
