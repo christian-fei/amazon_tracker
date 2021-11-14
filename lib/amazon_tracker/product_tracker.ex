@@ -37,8 +37,7 @@ defmodule AmazonTracker.ProductTracker do
     state = Map.put(state, :price, price)
     state = Map.put(state, :title, title)
     state = Map.put(state, :image, image)
-    # state = %{state | body: body}
-    # state = %{state | body: body.body}
+    state = Map.put(state, :body, body)
 
     {:noreply, state}
   end
