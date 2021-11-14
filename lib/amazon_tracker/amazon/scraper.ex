@@ -7,7 +7,7 @@ defmodule AmazonTracker.Amazon.Scraper do
 
     infos =
       try do
-        product = product_from_document(document, product.url)
+        product_from_document(document, product)
       rescue
         e -> product
       end
@@ -29,7 +29,7 @@ defmodule AmazonTracker.Amazon.Scraper do
     end
   end
 
-  defp product_from_document(document, url) do
+  defp product_from_document(document, product) do
     title = document |> Floki.find("#productTitle") |> Floki.text() |> String.trim()
 
     price =
@@ -47,19 +47,13 @@ defmodule AmazonTracker.Amazon.Scraper do
       |> Enum.at(0, "")
 
     %{
-      url: url,
+      url: product.url,
       price: price,
       title: title,
       image: image
     }
-
-    # rescue
-    #   e ->
-    #     %{
-    #       url: url,
-    #       price: nil,
-    #       title: nil,
-    #       image: nil
-    #     }
+  rescue
+    e ->
+      product
   end
 end
