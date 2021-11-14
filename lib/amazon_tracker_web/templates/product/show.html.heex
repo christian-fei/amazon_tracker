@@ -1,4 +1,7 @@
 <div class="product">
+  <span><%= link "Edit", to: Routes.product_path(@conn, :edit, @product) %></span> |
+  <span><%= link "Back", to: Routes.product_path(@conn, :index) %></span>
+
   <h1 class="title"><%= @product.title %></h1>
 
   <img src={@product.image}/>
@@ -23,6 +26,3 @@
     <% end %>
   </div>
 </div>
-
-<span><%= link "Edit", to: Routes.product_path(@conn, :edit, @product) %></span> |
-<span><%= link "Back", to: Routes.product_path(@conn, :index) %></span>
