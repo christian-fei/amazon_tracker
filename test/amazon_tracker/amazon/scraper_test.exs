@@ -4,7 +4,7 @@ defmodule AmazonTracker.TrackerTest do
 
   test "scrapes amazon product information" do
     url = "https://www.amazon.it/gp/product/B08DRSHH8T"
-    {:ok, product} = Scraper.scrape(url)
+    {:ok, product} = Scraper.scrape(%{url: url})
 
     assert product.title
     assert product.image
