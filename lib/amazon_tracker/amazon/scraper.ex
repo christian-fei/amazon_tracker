@@ -1,14 +1,19 @@
 defmodule AmazonTracker.Amazon.Scraper do
-  def scrape(url) do
-    IO.puts("scraping " <> url)
-    {:ok, body} = get_body(url)
+  def scrape(product) do
+    IO.puts("scraping " <> product.url)
+    {:ok, body} = get_body(product.url)
 
     {:ok, document} = Floki.parse_document(body)
 
-    product = product_from_document(document, url)
+    infos =
+      try do
+        product = product_from_document(document, product.url)
+      rescue
+        e -> product
+      end
 
-    IO.puts("scraped " <> url)
-    {:ok, product}
+    IO.puts("scraped " <> infos.url)
+    {:ok, infos}
   end
 
   defp get_body(url) do
@@ -47,13 +52,14 @@ defmodule AmazonTracker.Amazon.Scraper do
       title: title,
       image: image
     }
-  rescue
-    e ->
-      %{
-        url: url,
-        price: nil,
-        title: nil,
-        image: nil
-      }
+
+    # rescue
+    #   e ->
+    #     %{
+    #       url: url,
+    #       price: nil,
+    #       title: nil,
+    #       image: nil
+    #     }
   end
 end

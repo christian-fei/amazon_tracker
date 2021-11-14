@@ -19,9 +19,14 @@ defmodule AmazonTracker.Amazon.Tracker do
 
     updated_product_infos =
       Enum.map(products, fn p ->
-        {:ok, p} = AmazonTracker.Amazon.Scraper.scrape(p.url)
-        p
+        Task.Supervisor.async(AmazonTracker.TaskSupervisor, fn ->
+          {:ok, p} = AmazonTracker.Amazon.Scraper.scrape(p)
+          p
+        end)
       end)
+      |> Enum.map(&Task.await/1)
+
+    IO.inspect(updated_product_infos)
 
     update_products(products, updated_product_infos)
     insert_prices(products, updated_product_infos)

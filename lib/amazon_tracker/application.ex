@@ -14,6 +14,7 @@ defmodule AmazonTracker.Application do
       AmazonTrackerWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: AmazonTracker.PubSub},
+      {Task.Supervisor, name: AmazonTracker.TaskSupervisor},
       AmazonTracker.Amazon.Tracker,
       # Start the Endpoint (http/https)
       AmazonTrackerWeb.Endpoint
