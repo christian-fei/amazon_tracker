@@ -32,3 +32,4 @@ amazon_tracker-*.tar
 npm-debug.log
 /assets/node_modules/
 
+priv/static

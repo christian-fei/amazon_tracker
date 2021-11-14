@@ -99,3 +99,20 @@
 .price-history-item time {
   font-size: 0.8em;
 }
+
+.button {
+  display: inline-block; 
+  padding: 0.5em 1em;
+  border: 1px solid lightgrey;
+  border-radius: 0.25em 0.125em;
+}
+
+.price-history {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+body > * {
+  max-width: 70em;
+  margin: 0 auto;
+}

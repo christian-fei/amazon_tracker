@@ -16,7 +16,7 @@
     <%= @product.image %>
   </div>
 
-  <div>
+  <div class="price-history">
     <h2>Price history</h2>
     <%= for price <- @product.prices |> Enum.take(10) do %>
       <div class="price-history-item">

@@ -13,12 +13,10 @@
     <header>
       <section class="container">
         <nav>
-          <ul>
-            <li><a href="/products">products</a></li>
+            <a href="/products">Products</a>
             <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
-              <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
+              <%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %>
             <% end %>
-          </ul>
         </nav>
       </section>
     </header>
