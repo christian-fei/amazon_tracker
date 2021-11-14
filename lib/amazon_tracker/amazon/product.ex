@@ -16,6 +16,6 @@ defmodule AmazonTracker.Amazon.Product do
   def changeset(product, attrs) do
     product
     |> cast(attrs, [:title, :url, :image])
-    |> validate_required([:title, :url, :image])
+    |> validate_required([:url])
   end
 end
