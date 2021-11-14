@@ -4,8 +4,7 @@ defmodule AmazonTracker.TrackerTest do
 
   test "scrapes amazon product information" do
     url = "https://www.amazon.it/gp/product/B08DRSHH8T"
-    {:ok, pid} = Scraper.start_link(url)
-    {:ok, product} = GenServer.call(pid, :scrape)
+    {:ok, product} = Scraper.scrape(url)
 
     assert product.title
     assert product.image

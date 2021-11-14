@@ -19,8 +19,7 @@ defmodule AmazonTracker.Amazon.Tracker do
 
     updated_product_infos =
       Enum.map(products, fn p ->
-        {:ok, pid} = AmazonTracker.Amazon.Scraper.start_link(p.url)
-        {:ok, p} = GenServer.call(pid, :scrape)
+        {:ok, p} = AmazonTracker.Amazon.Scraper.scrape(p.url)
         p
       end)
 

@@ -1,31 +1,14 @@
 defmodule AmazonTracker.Amazon.Scraper do
-  use GenServer
-
-  def start_link(url) do
-    GenServer.start_link(__MODULE__, url, [])
-  end
-
-  @impl true
-  def init(url) do
-    state = %{url: url, title: nil, price: nil, image: nil}
-    {:ok, state}
-  end
-
-  @impl true
-  def handle_call(:scrape, _from, state) do
-    IO.puts("scraping " <> state.url)
-    {:ok, body} = get_body(state.url)
+  def scrape(url) do
+    IO.puts("scraping " <> url)
+    {:ok, body} = get_body(url)
 
     {:ok, document} = Floki.parse_document(body)
 
-    product = product_from_document(document, state.url)
+    product = product_from_document(document, url)
 
-    state = Map.put(state, :price, product.price)
-    state = Map.put(state, :title, product.title)
-    state = Map.put(state, :image, product.image)
-
-    IO.puts("scraped " <> state.url)
-    {:reply, {:ok, product}, state}
+    IO.puts("scraped " <> url)
+    {:ok, product}
   end
 
   defp get_body(url) do
@@ -64,5 +47,13 @@ defmodule AmazonTracker.Amazon.Scraper do
       title: title,
       image: image
     }
+  rescue
+    e ->
+      %{
+        url: url,
+        price: nil,
+        title: nil,
+        image: nil
+      }
   end
 end
