@@ -1,13 +1,11 @@
 defmodule AmazonTracker.TrackerTest do
   use ExUnit.Case, async: true
-  alias AmazonTracker.ProductTracker
+  alias AmazonTracker.Amazon.Scraper
 
   test "scrapes amazon product information" do
     url = "https://www.amazon.it/gp/product/B08DRSHH8T"
-    {:ok, pid} = ProductTracker.start_link(url)
-    Process.sleep(2_000)
-
-    {:ok, product} = GenServer.call(pid, :product)
+    {:ok, pid} = Scraper.start_link(url)
+    {:ok, product} = GenServer.call(pid, :scrape)
 
     assert product.title
     assert product.image
