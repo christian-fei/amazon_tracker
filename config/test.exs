@@ -20,9 +20,6 @@ config :amazon_tracker, AmazonTrackerWeb.Endpoint,
   secret_key_base: "MNI/CWLK5D1Cp7VOVgIn/Eqn+e5VoZCpE6gUrHzsi2N37wGcnTsZJ1hwhW1Rin/6",
   server: false
 
-# In test we don't send emails.
-config :amazon_tracker, AmazonTracker.Mailer, adapter: Swoosh.Adapters.Test
-
 # Print only warnings and errors during test
 config :logger, level: :warn
 
